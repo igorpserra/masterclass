@@ -4,6 +4,8 @@ void main(List<String> args) {
 
   //valido
   validadorDeCartao('4916 6418 5936 9080');
+
+  validadorDeCartao('0000 0000 0000 0000');
 }
 
 void validadorDeCartao(String numCartao) {
@@ -36,7 +38,12 @@ void validadorDeCartao(String numCartao) {
       }
     }
   }
-  int fator = ((somaCartao % 10));
+  if (somaCartao == 0) {
+    print('cartao invalido');
+    return;
+  }
+
+  int fator = (10 - (somaCartao % 10)) == 10 ? 0 : (10 - (somaCartao % 10));
 
   if (ultimoDigito == fator) {
     print('cartao válido');
